@@ -1,11 +1,10 @@
-#%%
 '''
 Graphical User Interface for the Image Compressor App.
 '''
 import os,sys
 import tkinter as Tkinter
 import tkinter.filedialog as tkFileDialog
-from resizeableImage import ResizeableImage
+from compressor import ResizeableImage
 from ttkthemes import ThemedTk
 
 seam = None

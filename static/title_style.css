@@ -1,0 +1,24 @@
+h1{
+    line-height: 600px;
+    text-align: center;
+    font-size: 70px;
+    font-family: Hack, sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #000, #ffcc2a, #000);
+    letter-spacing: 5px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: repeat;
+    background-size: 80%;
+    animation: shine 10s linear infinite;
+    position: relative;
+    }
+    @keyframes shine {
+    0% {
+        background-position-x: -500%;
+    }
+    100% {
+        background-position-x: 500%;
+    }
+    }

@@ -1,0 +1,1 @@
+from imageResizer.resizeableImage import ResizeableImage

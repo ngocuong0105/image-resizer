@@ -5,23 +5,32 @@ import cv2
 
 class ResizeableImage:
     def __init__(self, image: np.array, protected = set(), removed = set()):
-        """Takes a image filename and stores pixels, width and height."""
+        """
+        Takes a image filename and stores pixels, width and height.
+        """
         self.height, self.width, _= image.shape
         self.pixels = image
         self.protected = protected
         self.removed = removed
         self.const = 5000
-        
+
+    #################################
+    # Image operations with seam
+    #################################
     def color_seam(self, seam, color=[0,0,255]):
-        """Takes a seam (a list of coordinates) and colors it all one color."""
+        """
+        Takes a seam (a list of coordinates) and colors it all one color.
+        """
         for i,j in seam:
             self.pixels[i][j] = color
 
     def remove_seam(self, seam):
-        """Takes a seam (a list of coordinates with exactly one pair of
+        """
+        Takes a seam (a list of coordinates with exactly one pair of
         coordinates per row). Removes pixel at each of those coordinates,
-        and slides left all the pixels to its right. Shifts pixels under protection and removal
-        accordingly. Decreases the width by 1."""
+         and slides left all the pixels to its right. Shifts pixels under
+        protection and removal accordingly. Decreases the width by 1.
+        """
         for i,j in seam:
             if (i,j) in self.removed:
                 self.removed.remove((i,j))
@@ -36,15 +45,56 @@ class ResizeableImage:
         self.pixels = np.delete(self.pixels,-1,1)
         self.width -= 1
 
+    def insert_seam(self, seam):
+        """
+        Takes a seam (a list of coordinates with exactly one pair of
+        coordinates per row). Adds seam on the right which is the average of its neighbour pixels.
+        """
+        self.pixels = np.insert(self.pixels,self.width,self.pixels[:,-1],axis=1)
+        for i,j in seam:
+            for jj in range(self.width,j,-1):
+                self.pixels[i][jj] = self.pixels[i][jj-1]
+            self.pixels[i][j] = self._average(i,j)
+        self.width += 1
+    
+    def _average(self,i,j):
+        res = []
+        neighbours = [(-1,-1),(-1,1),(0,-1),(0,1),(1,-1),(1,-1)]
+        for c in range(3):
+            curr,count = 0,0
+            for dx,dy in neighbours:
+                if i+dx>=0 and i+dx<self.height and j+dy>=0 and j+dy<self.width:
+                    curr += self.pixels[i+dx][j+dy][c]
+                    count += 1
+            res.append(curr/count)
+        return res
+
+    def uncolor_seam(self, seam):
+        for i,j in seam:
+            for c in range(3):
+                self.pixels[i][j][c] = (self.pixels[i][min(j+1,self.width-1)][c]\
+                    + self.pixels[i][max(0,j-1)][c])/2
+    
+    def protect_seam(self, seam):
+        for i,j in seam:
+            self.protected.add((i,j)) 
+
+    def unprotect_image(self):
+        self.protected = set()
+        
+    #################################
+    # Energy matricies computation
+    #################################
     @lru_cache()
     def energy(self, i, j) -> float:
-        """Given coordinates (i,j), returns an energy, or cost associated
-        with removing that pixel."""
+        """
+        Given coordinates (i,j), returns an energy, or cost associated with removing that pixel.
+        """
         # assign high cost for edges and protected cells
         if i==0 or i==self.height-1 or j==0 or j==self.width-1 or (i,j) in self.protected:
-            return 5000
+            return self.const
         elif (i,j) in self.removed:
-            return -5000
+            return -self.const
         else: 
             return self.distance(self.pixels[i][j-1], self.pixels[i][j+1]) +\
                    self.distance(self.pixels[i-1][j], self.pixels[i+1][j]) +\
@@ -52,7 +102,9 @@ class ResizeableImage:
                    self.distance(self.pixels[i-1][j+1], self.pixels[i+1][j-1])
 
     def distance(self, pixelA, pixelB):
-        """A distance metric between two pixels, based on their colors."""
+        """
+        A distance metric between two pixels, based on their colors.
+        """
         ans = 0
         for i in range(len(pixelA)):
             valueA = pixelA[i]
@@ -66,24 +118,24 @@ class ResizeableImage:
             for j in range(self.width):
                 mat[i][j]=self.energy(i,j)
         return mat
-        
+
     def scharr_energy_mat(self) -> 'np.array[float]':
         b, g, r = cv2.split(self.pixels)
-        b_energy = np.absolute(cv2.Scharr(b, -1, 1, 0)) + np.absolute(cv2.Scharr(b, -1, 0, 1))
-        g_energy = np.absolute(cv2.Scharr(g, -1, 1, 0)) + np.absolute(cv2.Scharr(g, -1, 0, 1))
-        r_energy = np.absolute(cv2.Scharr(r, -1, 1, 0)) + np.absolute(cv2.Scharr(r, -1, 0, 1))
+        b_energy = (np.square(cv2.Scharr(b, -1, 1, 0)) + np.square(cv2.Scharr(b, -1, 0, 1)))**0.5
+        g_energy = (np.square(cv2.Scharr(g, -1, 1, 0)) + np.square(cv2.Scharr(g, -1, 0, 1)))**0.5
+        r_energy = (np.square(cv2.Scharr(r, -1, 1, 0)) + np.square(cv2.Scharr(r, -1, 0, 1)))**0.5
         mat = b_energy+g_energy+r_energy
         for i,j in self.protected:
             mat[i][j] = 3*self.const
         for i,j in self.removed:
             mat[i][j] = -3*self.const
         return mat
-        
+
     def sobel_energy_mat(self) -> 'np.array[float]':
         b, g, r = cv2.split(self.pixels)
-        b_energy = np.absolute(cv2.Sobel(b, -1, 1, 0)) + np.absolute(cv2.Sobel(b, -1, 0, 1))
-        g_energy = np.absolute(cv2.Sobel(g, -1, 1, 0)) + np.absolute(cv2.Sobel(g, -1, 0, 1))
-        r_energy = np.absolute(cv2.Sobel(r, -1, 1, 0)) + np.absolute(cv2.Sobel(r, -1, 0, 1))
+        b_energy = (np.square(cv2.Sobel(b, -1, 1, 0)) + np.square(cv2.Sobel(b, -1, 0, 1)))**0.5
+        g_energy = (np.square(cv2.Sobel(g, -1, 1, 0)) + np.square(cv2.Sobel(g, -1, 0, 1)))**0.5
+        r_energy = (np.square(cv2.Sobel(r, -1, 1, 0)) + np.square(cv2.Sobel(r, -1, 0, 1)))**0.5
         mat = b_energy+g_energy+r_energy
         for i,j in self.protected:
             mat[i][j] = self.const
@@ -91,13 +143,17 @@ class ResizeableImage:
             mat[i][j] = -self.const
         return mat
 
+    #################################
+    # Type conversion of images
+    #################################
+
     def encodeBytes(self,format:str):
         _, encoded_image = cv2.imencode('.'+format, self.pixels)
         return encoded_image.tobytes()
 
     def openPilImage(self):
         np_img= cv2.cvtColor(self.pixels,cv2.COLOR_BGR2RGB)
-        np_img = np_img.astype(np.uint8)
+        np_img = np_img.astype(np.uint32)
         return Image.fromarray(np_img)
 
     # def byteImage(self):
@@ -112,6 +168,10 @@ class ResizeableImage:
     #     img_byte_arr = img_byte_arr.getvalue()
     #     return img_byte_arr
 
+    ###################################
+    # Optimal seam computation using DP
+    ###################################
+
     def best_seam(self) -> 'list[tuple]':
         '''
         Computes vertical seam with lowest energy.
@@ -121,7 +181,7 @@ class ResizeableImage:
         # initializing dp
         dp = [[None]*(n) for _ in range(m)]
         record = [[None]*(n) for _ in range(m)]
-        energy_mat = self.sobel_energy_mat()
+        energy_mat = self.scharr_energy_mat()
         for j in range(n):
             dp[0][j]=energy_mat[0][j]
             record[0][j]=[0,j]

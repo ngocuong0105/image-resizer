@@ -28,8 +28,8 @@ def run():
     ratio = resImage.height//resImage.width+1
     display_width=min(max(resImage.width,800),1000)
     display_height=ratio*500
-    options = ['🖼️ Image resizing','📸 Image resizing with protected area','✂️ Object removal','']
-    mode = st.selectbox('Select action',options, index = 3)
+    options = ['🖼️ Image resizing','📸 Image resizing with protected area','✂️ Object removal','Enlarge image','']
+    mode = st.selectbox('Select action',options, index = 4)
     # image resizing
     if mode=='🖼️ Image resizing':
         # select new height and width
@@ -94,7 +94,9 @@ def run():
                 img_place.image(resImage.encodeBytes(format_type),width=display_width)
                 resImage.remove_seam(vertical_seam)
             st.session_state['result'] = resImage
+            img_place.image(resImage.encodeBytes(format_type),width=display_width)
             txt_place.write('Finished. Click save button below to download.')
+            bar.progress(1.0)
 
         if 'result' in st.session_state:
             download_image_button(st.session_state['result'],format_type)
@@ -140,8 +142,31 @@ def run():
                 resImage.remove_seam(vertical_seam)
                 curr = len(resImage.removed)
             st.session_state['result'] = resImage
+            img_place.image(resImage.encodeBytes(format_type),width=display_width)
             bar.progress(1.0)
             txt_place.write('Finished. Click save button below to download.')
+
+        if 'result' in st.session_state:
+            download_image_button(st.session_state['result'],format_type)
+
+    elif mode == 'Enlarge image':
+        num_enlarge = st.number_input('Number of seams to add:',1,1000,10,1)
+        if click_button('Go!'):
+            txt_place = st.empty()
+            image_place = st.empty()
+            vertical_seam = resImage.best_seam()
+            for i in range(num_enlarge):
+                prev_seam = vertical_seam
+                if i>0:
+                    resImage.uncolor_seam(prev_seam)
+                vertical_seam = resImage.best_seam()
+                resImage.insert_seam(vertical_seam)
+                resImage.color_seam(vertical_seam)
+                txt_place.write(f'Seam {i+1}')
+                image_place.image(resImage.encodeBytes(format_type),width=display_width)
+
+            image_place.image(resImage.encodeBytes(format_type),width=display_width)
+            st.session_state['result'] = resImage
 
         if 'result' in st.session_state:
             download_image_button(st.session_state['result'],format_type)

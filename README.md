@@ -56,5 +56,5 @@ The app supports image compression, enlargement and object removal which is a co
 2. Upload image you want to resize
 
 ### Where is Pikachu?
-![](results/oo.mov)
+![][click](results/oo.mov)
 ![](results/oo.mp4)

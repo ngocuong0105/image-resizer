@@ -62,6 +62,6 @@ The app supports image compression, enlargement and object removal which is a co
 6. Download image and then upload it again to enlarge back to initial size.
 7. Enlarge image with protection (protect Ash).
 8. Done
-- Video of these steps:
+- 2 minutes video of these steps. Click show subtitles in it to follow steps.
 
 [![Pika Pika](results/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)

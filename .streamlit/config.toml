@@ -98,7 +98,7 @@ cookieSecret = "ad8cea9ac817233c5b110706880e60e94d5df08f4c5f5d24e0e69838ae348e57
 # If false, will attempt to open a browser window on start.
 # Default: false unless (1) we are on a Linux box where DISPLAY is unset, or (2) server.liveSave is set.
 # The value below was set in /home/ncuong/.streamlit/config.toml
-headless = false
+headless = true
 
 # Automatically rerun script when the file is modified on disk.
 # Default: false

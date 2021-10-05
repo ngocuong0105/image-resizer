@@ -57,6 +57,7 @@ The app supports image compression, enlargement and object removal which is a co
 
 
 ### Where is Pikachu?
+![](results/objectRemovalExample.mp4)
 
 <video width="320" height="240" controls>
   <source src="results/objectRemovalExample.mp4" type="video/mp4">

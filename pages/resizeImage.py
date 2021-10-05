@@ -11,6 +11,10 @@ from utils import click_button
 from imageResizer import ResizeableImage, resizeableImage
 
 def open_file() -> 'tuple[ResizeableImage,str]':
+    '''
+    Image uploader for resizing image page. Return ResizeableImage object which supports
+    all operations for seam computation, insertion, removal.
+    '''
     st.write("Check out sample results and the source code of this app in my [GitHub](https://github.com/ngocuong0105/imageResizer).")
     uploaded_file = st.file_uploader("Upload image file", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
@@ -22,6 +26,9 @@ def open_file() -> 'tuple[ResizeableImage,str]':
         return resImage
 
 def run() -> None:
+    '''
+    Driver function for running the whole page.
+    '''
     resImage = open_file()
     if resImage==None:
         st.stop()
@@ -105,52 +112,62 @@ def run() -> None:
             download_image_button(st.session_state['result'],resImage.format_type)
 
 def soften_area(resImage:resizeableImage, area: set()) -> None:
+    '''
+    Image blurring/softening on certain area selected in canvas by user.
+    '''
     resImage.blur(area)
     st.write('Image is ready:')
     st.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
     st.session_state['result'] = resImage
     
 def compress_image(resImage:resizeableImage, new_width:int, remove:bool = False) -> None:
-        # text and image placeholders
-        txt_place = st.empty()
-        bar = st.progress(0)
-        img_place = st.empty()
-        if not remove:
-            w = resImage.width
-            for i in range(w-new_width):
-                txt_place.write(f'Compressing image... Current width: {resImage.width}')
-                bar.progress((i+1)/(w-new_width+1))
-                # seam computation
-                vertical_seam = resImage.best_seam()
-                resImage.color_seam(vertical_seam) 
-                img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
-                resImage.remove_seam(vertical_seam)
-        else:
-            n = len(resImage.removed)
-            prev,curr=n,n
-            removed_pixls = 0
-            # plot_place= st.empty()
-            while len(resImage.removed)>0:
-                # text and bar placeholders
-                txt_place.write(f'Removing object... Current width: {resImage.width}. ')
-                removed_pixls+=prev-curr
-                bar.progress(removed_pixls/n)
-                # seam computation
-                prev = curr
-                vertical_seam = resImage.best_seam()
-                resImage.color_seam(vertical_seam) 
-                img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
-                # if prev==n:
-                #     import time
-                #     time.sleep(15)
-                resImage.remove_seam(vertical_seam)
-                curr = len(resImage.removed)
-                if prev==curr:
-                    break
-        bar.progress(1.0)
-        st.session_state['result']=resImage
+    '''
+    Image compression - supports object removal and object protection.
+    Protected objects and object tobe removed are chosen by user in canvas drawing.
+    '''
+    # text and image placeholders
+    txt_place = st.empty()
+    bar = st.progress(0)
+    img_place = st.empty()
+    if not remove:
+        w = resImage.width
+        for i in range(w-new_width):
+            txt_place.write(f'Compressing image... Current width: {resImage.width}')
+            bar.progress((i+1)/(w-new_width+1))
+            # seam computation
+            vertical_seam = resImage.best_seam()
+            resImage.color_seam(vertical_seam) 
+            img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
+            resImage.remove_seam(vertical_seam)
+    else:
+        n = len(resImage.removed)
+        prev,curr=n,n
+        removed_pixls = 0
+        while len(resImage.removed)>0:
+            # text and bar placeholders
+            txt_place.write(f'Removing object... Current width: {resImage.width}. ')
+            removed_pixls+=prev-curr
+            bar.progress(removed_pixls/n)
+            # seam computation
+            prev = curr
+            vertical_seam = resImage.best_seam()
+            resImage.color_seam(vertical_seam) 
+            img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
+            # if prev==n:
+            #     import time
+            #     time.sleep(15)
+            resImage.remove_seam(vertical_seam)
+            curr = len(resImage.removed)
+            if prev==curr:
+                break
+    bar.progress(1.0)
+    st.session_state['result']=resImage
 
 def enlarge_image(resImage:resizeableImage, new_width:int) -> None:
+    '''
+    Image enlargment supports object protection and certain areas for enlargment.
+    Protected objects and areas for enlargment are chosen by user in canvas drawing.
+    '''
     txt_place = st.empty()
     bar = st.progress(0)
     image_place = st.empty()
@@ -171,6 +188,9 @@ def enlarge_image(resImage:resizeableImage, new_width:int) -> None:
     st.session_state['result'] = resImage
 
 def download_image_button(resImage: ResizeableImage, format_type:str) -> None:
+    '''
+    Button for downloading an image.
+    '''
     txt = 'Save file'
     button = click_button(txt,size=15)
     if button:
@@ -181,6 +201,10 @@ def download_image_button(resImage: ResizeableImage, format_type:str) -> None:
             mime=f'image/{format_type}')
 
 def new_width_height(resImage:ResizeableImage) -> tuple:
+    '''
+    Selection boxes for users to choose desired height and width when compressing.
+    Currently the app supports compression only on the width side.
+    '''
     # txt_height = f'Select desired height\
     #         (should be smaller than the current height of {resImage.height}px):'
     # new_height = st.number_input(txt_height, value = int(resImage.height*0.8), step=1)
@@ -196,6 +220,10 @@ def new_width_height(resImage:ResizeableImage) -> tuple:
     return new_height,new_width
 
 def new_width_height_enlarge(resImage:ResizeableImage) -> tuple:
+    '''
+    Selection boxes for users to choose desired height and width when enlarging.
+    Currently the app supports enlargement only on the width side.
+    '''
     # txt_height = f'Select desired height\
     #         (should be larger than the current height of {resImage.height}px):'
     # new_height = st.number_input(txt_height, value = int(resImage.height*1.5), step=1)
@@ -211,6 +239,10 @@ def new_width_height_enlarge(resImage:ResizeableImage) -> tuple:
     return new_height,new_width
 
 def canvas_protection(resImage:ResizeableImage, tool_txt:str, start_txt:str, end_txt:str, height:float, width:float, key = None) -> set:
+    '''
+    User interface for canvas drawing to select certain areas in the image.
+    '''
+
     # canvas options
     drawing_mode = st.selectbox(tool_txt,('polygon', 'circle','rectangle'),key=key)
 
@@ -277,13 +309,14 @@ def canvas_protection(resImage:ResizeableImage, tool_txt:str, start_txt:str, end
         st.stop() # canvas area not selected
 
 def _display_energy(resImage: ResizeableImage):
+    '''
+    Helper function when debugging. Displays energy map of the image.
+    Useful to put in loops while computing seams and image is compressed or enlarged.
+    '''
     mat = resImage.sobel_energy_mat()
     fig, ax = plt.subplots()
     sns.heatmap(mat, ax=ax, cmap='Spectral')
+    # put this code below wherever you want to display the energy map
     # energy_place = st.empty()
     # energy_place.write(_display_energy(resImage))
     return fig
-
-def _lines(n) -> None:
-    for _ in range(n):
-        st.write('')

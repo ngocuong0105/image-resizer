@@ -10,15 +10,18 @@ import copy
 class ResizeableImage:
     def __init__(self, image: np.array, format_type:str = '.png') -> None:
         """
-        Takes a image filename and stores pixels, width and height.
+        ResizeableImage is the core object of this app. 
+        It takes an image filename and stores the image pixels, width and height.
+        Supports all operations on seams - removal, insertion, coloring.
         """
         self.height, self.width, _= image.shape
         self.pixels = image
         self.format_type = format_type
+
         self.protected = set()
         self.removed = set()
         self.temp_protected = set()
-        self.const = 30000
+        self.const = 30000 # energy constant
 
     #################################
     # Image operations with seam
@@ -112,6 +115,9 @@ class ResizeableImage:
                     self.temp_protected.remove((i,j-rang))
 
     def marked_seam(self, seam:list, thickness:int = 0, color = [0,0,255]):
+        '''
+        Takes a seam and returns it marked in read.
+        '''
         marked = copy.deepcopy(self.pixels)
         for i,j in seam:
             marked[i][j] = color
@@ -121,9 +127,9 @@ class ResizeableImage:
         return marked
 
     def blur(self, area:set):
-        # import math
-        # import streamlit as st
-        # st.write(self.pixels[280][203])
+        '''
+        Softens color of pixels in area by taking average of its nearby pixels.
+        '''
         for i,j in area:
             newcolor = []
             for c in range(3):
@@ -133,10 +139,6 @@ class ResizeableImage:
                     val+=self.pixels[i][min(self.width-1,j+jj)][c]
                 newcolor.append(val/40)
             self.pixels[i][j] = newcolor
-
-        # st.write(area)
-        # st.write(val)
-        # st.write(self.pixels[280][203])
 
     #################################
     # Energy matricies computation

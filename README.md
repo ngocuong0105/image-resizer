@@ -1,15 +1,30 @@
-# Image Compression
-![Ship](results/image_compression/ship.gif)
+## IMAGE COMPRESSION
 
-![Original](results/image_compression/ship_Original.jpg)
-![My image resizer](results/image_compression/ship_Original.jpg)
-![Simple scaling](results/image_compression/ship_Scale.jpg)
+## The ship shall not sink!
+![](results/image_compression/ship.gif)
 
-# Image enlargment
-![Charmander](results/charmander1.gif)
+## Original image
+![](results/image_compression/ship_Original.jpg)
 
-![Original](results/image_compression/charmander_Original.jpg)
-![My image resizer](results/image_compression/charmander_Original.jpg)
-![Simple scaling](results/image_compression/charmander_Scale.jpg)
+### Image enlargement with content protection
+![](results/image_compression/ship_ImageResizer.jpg)
 
-# Object Removal
+### Generic image compression with scaling
+![](results/image_compression/ship_Scale.jpg)
+
+## IMAGE ENLARGEMENT
+
+### Protect Charmander!
+![](results/image_enlargement/charmander.gif)
+
+### Original image
+<!-- ![](results/image_enlargement/charmander_Original.png) -->
+<img src="results/image_enlargement/charmander_Original.png" width = "600" height="380">
+
+### Image enlargement with content awareness
+![](results/image_enlargement/charmander_ImageResizer.png)
+
+### Generic image enlargement with scaling
+![](results/image_enlargement/charmander_Scale.png)
+
+## OBJECT REMOVAL

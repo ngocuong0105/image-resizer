@@ -1,8 +1,9 @@
 ## IMAGE COMPRESSION
-## The ship shall not sink!
+
+### The ship shall not sink!
 ![](results/image_compression/ship.gif)
 
-## Original image
+### Original image
 ![](results/image_compression/ship_Original.jpg)
 
 ### Image enlargement with content protection

@@ -51,10 +51,9 @@ The app supports image compression, enlargement and object removal which is a co
 ------------------------------------------------------------------------------------
 ## How to use [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) in 2 minutes?
 
-### Where is Pikachu?
+### Example: Where is Pikachu?
 ![](results/ash.gif)
 
-### Example of object removal
 1. Open [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) and click Start to load resizing page.
 2. Upload image you want to resize.
 3. Choose Image compression with object removal.

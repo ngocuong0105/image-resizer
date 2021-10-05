@@ -6,7 +6,7 @@
 ### Original image
 ![](results/image_compression/ship_Original.jpg)
 
-### Image enlargement with content protection
+### Image compression with content protection
 ![](results/image_compression/ship_ImageResizer.jpg)
 
 ### Generic image compression with scaling

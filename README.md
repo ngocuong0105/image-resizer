@@ -51,10 +51,18 @@ The app supports image compression, enlargement and object removal which is a co
 ------------------------------------------------------------------------------------
 ## How to use [image resizer]() in 2 minutes
 
-### Example of object removal
-1. Click Start to load resizing page
-2. Upload image you want to resize
-
 ### Where is Pikachu?
-![][click](results/oo.mov)
-![](results/oo.mp4)
+![](results/ash.gif)
+
+### Example of object removal
+1. Open [image resizer]() and click Start to load resizing page.
+2. Upload image you want to resize.
+3. Choose Image compression with object removal.
+4. On the canvas draw around the area you want to remove (Bye Pikachu)
+5. Click resize and wait.
+6. Download image and then upload it again to enlarge back to initial size.
+7. Enlarge image with protection (protect Ash).
+8. Done
+- Video of these steps:
+
+[![Pika Pika](results/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)

@@ -1,5 +1,4 @@
 ## IMAGE COMPRESSION
-
 ## The ship shall not sink!
 ![](results/image_compression/ship.gif)
 

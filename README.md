@@ -1,3 +1,13 @@
+## OBJECT REMOVAL
+### Vase bye bye!
+![](results/object_removal/sofa.gif)
+
+### Original image
+![](results/object_removal/sofa.jpg)
+
+### Vase removed
+![](results/object_removal/sofa_removed.jpeg)
+
 ## IMAGE COMPRESSION
 
 ### The ship shall not sink!
@@ -9,7 +19,7 @@
 ### Image compression with content protection
 ![](results/image_compression/ship_ImageResizer.jpg)
 
-### Generic image compression with scaling
+### Generic image scaling using first [google result](https://resizeimage.net/) for "image resizing"
 ![](results/image_compression/ship_Scale.jpg)
 
 ## IMAGE ENLARGEMENT
@@ -24,7 +34,7 @@
 ### Image enlargement with content awareness
 ![](results/image_enlargement/charmander_ImageResizer.png)
 
-### Generic image enlargement with scaling
+### Generic image scaling using first [google result](https://resizeimage.net/) for "image resizing"
 ![](results/image_enlargement/charmander_Scale.png)
 
-## OBJECT REMOVAL
+

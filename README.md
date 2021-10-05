@@ -4,7 +4,7 @@
 - Have you ever wanted to remove an unwanted item from an image and make it disappear as if it was never there?
 
 If you answer yes to any of the questions above, you are on the right place. This project provides a [web application]() for image resizing with content awareness. Successful compression and enlargement of images should not take into account only  geometric constraints, but consider the image content as well. Inspired by this [youtube video](http://www.youtube.com/watch?v=vIFCV2spKtg) and [Avidan and Shamir](http://graphics.cs.cmu.edu/courses/15-463/2007_fall/hw/proj2/imret.pdf) paper, we use seam carving to resize images while protecting sensitive parts of the image such as objects. We achieve content-aware resizing by smartly picking which pixels to be removed or multiplied.**Rather than doing a simple scaling where all pixels are just averaged over neighbours or copied over, here we use dynamic programming to determine the "best" pixels to remove.**  
-The app supports image compression, enlargement and object removal which is a combination of the previous two. Below you can see sample results produced by my [image resizer]() app. These results are compared with a generic [image editor] (https://resizeimage.net/), which is one of the top results in google search.
+The app supports image compression, enlargement and object removal which is a combination of the previous two. Below you can see sample results produced by my [image resizer]() app. These results are compared with a generic [image editor](https://resizeimage.net/), which is one of the top results in google search.
 
 ------------------------------------------------------------------------------------
 ## Object removal

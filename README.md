@@ -49,7 +49,7 @@ The app supports image compression, enlargement and object removal which is a co
 ![](results/image_compression/ship_ImageResizer.jpg)
 
 ------------------------------------------------------------------------------------
-## How to use [image resizer]() in 2 minutes
+## How to use [image resizer]() in 2 minutes?
 
 ### Where is Pikachu?
 ![](results/ash.gif)

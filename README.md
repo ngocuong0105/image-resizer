@@ -19,7 +19,7 @@
 ### Image compression with content protection
 ![](results/image_compression/ship_ImageResizer.jpg)
 
-### Generic image scaling using first [google result](https://resizeimage.net/) for "image resizing"
+### Generic compression with scaling using first [google result](https://resizeimage.net/) 
 ![](results/image_compression/ship_Scale.jpg)
 
 ## IMAGE ENLARGEMENT
@@ -34,7 +34,7 @@
 ### Image enlargement with content awareness
 ![](results/image_enlargement/charmander_ImageResizer.png)
 
-### Generic image scaling using first [google result](https://resizeimage.net/) for "image resizing"
+### Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)
 ![](results/image_enlargement/charmander_Scale.png)
 
 

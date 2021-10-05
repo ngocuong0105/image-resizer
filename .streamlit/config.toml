@@ -222,13 +222,13 @@ keyPrefix = ""
 [theme]
 
 # The preset Streamlit theme that your custom theme inherits from. One of "light" or "dark".
-base = 'dark'
+base = 'light'
 
 # Primary accent color for interactive elements.
-# primaryColor = '#ffcc2a'
+primaryColor = '#ffcc2a'
 
 # Background color for the main content area.
-# backgroundColor = '#fffded'
+backgroundColor = '#f8f4d5'
 
 # Background color used for the sidebar and most interactive widgets.
 # secondaryBackgroundColor = '#ff952a'

@@ -48,4 +48,15 @@ The app supports image compression, enlargement and object removal which is a co
 ### Image compression with content protection
 ![](results/image_compression/ship_ImageResizer.jpg)
 
+------------------------------------------------------------------------------------
+## How to use [image resizer]() in 2 minutes
 
+### Example of object removal
+1. Click Start to load resizing page
+2. Upload image you want to resize
+
+### Where is Pikachu?
+
+<video width="320" height="240" controls>
+  <source src="results/objectRemovalExample.mp4" type="video/mp4">
+</video>

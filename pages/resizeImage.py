@@ -15,7 +15,8 @@ def open_file() -> 'tuple[ResizeableImage,str]':
     Image uploader for resizing image page. Return ResizeableImage object which supports
     all operations for seam computation, insertion, removal.
     '''
-    st.write("Check out sample results and the source code of this app in my [GitHub](https://github.com/ngocuong0105/imageResizer).")
+    txt = 'If this is your first time here please do check out sample results in my [GitHub](https://github.com/ngocuong0105/imageResizer).'
+    st.write(txt)
     uploaded_file = st.file_uploader("Upload image file", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
         st.write('File is loaded.')
@@ -199,6 +200,7 @@ def download_image_button(resImage: ResizeableImage, format_type:str) -> None:
             data=resImage.encodeBytes(f'.{format_type}'),
             file_name=f'result.{format_type}',
             mime=f'image/{format_type}')
+        del st.session_state['result']
 
 def new_width_height(resImage:ResizeableImage) -> tuple:
     '''
@@ -253,7 +255,7 @@ def canvas_protection(resImage:ResizeableImage, tool_txt:str, start_txt:str, end
         st.write('• Left click to choose point.')
         st.write('• Two left clicks to undo last point.')
         st.write('• Right click to close polygon.')
-        st.write('• Polygon should have greater than 4 vertices and concave shapes are discouraged.')
+        st.write('• Polygon should have more than 4 vertices and concave shapes are discouraged.')
     # Create a canvas 
     canvas_result = st_canvas(
     fill_color="rgba(255, 165, 0, 0.3)",

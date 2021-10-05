@@ -3,10 +3,10 @@
 ![](results/object_removal/sofa.gif)
 
 ### Original image
-![](results/object_removal/sofa.jpg)
+<img src="results/object_removal/sofa.jpg" width = "600" height="402">
 
 ### Vase removed
-![](results/object_removal/sofa_removed.jpeg)
+<img src="results/object_removal/sofa_removed.jpeg" width = "600" height="402">
 
 ## IMAGE COMPRESSION
 

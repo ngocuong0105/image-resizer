@@ -42,7 +42,7 @@ The app supports image compression, enlargement and object removal which is a co
 **Original image**  
 ![](results/image_compression/ship_Original.jpg)
 
-**Generic compression with scaling using first [google result](https://resizeimage.net/) **  
+**Generic compression with scaling using first [google result](https://resizeimage.net/)**  
 ![](results/image_compression/ship_Scale.jpg)
 
 **Image compression with content protection**  

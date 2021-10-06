@@ -11,47 +11,47 @@ The app supports image compression, enlargement and object removal which is a co
 **Vase bye bye!**  
 ![](results/object_removal/sofa.gif)
 
-### Original image
+**Original image**  
 <img src="results/object_removal/sofa.jpg" width = "600" height="402">
 
-### Vase removed
+**Vase removed**  
 <img src="results/object_removal/sofa_removed.jpeg" width = "600" height="402">
 
 ------------------------------------------------------------------------------------
 ## Image enlargement
 
-### Protect Charmander!
+**Protect Charmander!**  
 ![](results/image_enlargement/charmander.gif)
 
-### Original image
+**Original image**  
 <!-- ![](results/image_enlargement/charmander_Original.png) -->
 <img src="results/image_enlargement/charmander_Original.png" width = "600" height="380">
 
-### Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)
+**Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)**  
 ![](results/image_enlargement/charmander_Scale.png)
 
-### Image enlargement with content awareness
+**Image enlargement with content awareness**  
 ![](results/image_enlargement/charmander_ImageResizer.png)
 
 ------------------------------------------------------------------------------------
 ## Image compression
 
-### The ship shall not sink!
+**The ship shall not sink!**  
 ![](results/image_compression/ship.gif)
 
-### Original image
+**Original image**  
 ![](results/image_compression/ship_Original.jpg)
 
-### Generic compression with scaling using first [google result](https://resizeimage.net/) 
+**Generic compression with scaling using first [google result](https://resizeimage.net/) **  
 ![](results/image_compression/ship_Scale.jpg)
 
-### Image compression with content protection
+**Image compression with content protection**  
 ![](results/image_compression/ship_ImageResizer.jpg)
 
 ------------------------------------------------------------------------------------
 ## How to use [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) in 2 minutes?
 
-### Object removal example: Where is Pikachu?
+**Object removal example: Where is Pikachu?**  
 ![](results/instructions/ash.gif)
 
 1. Open [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) and click Start to load resizing page.

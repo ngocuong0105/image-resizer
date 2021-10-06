@@ -8,7 +8,7 @@ The app supports image compression, enlargement and object removal which is a co
 
 ------------------------------------------------------------------------------------
 ## Object removal
-**Vase bye bye!**
+**Vase bye bye!**  
 ![](results/object_removal/sofa.gif)
 
 ### Original image

@@ -69,8 +69,6 @@ The app supports image compression, enlargement and object removal which is a co
 <img src="results/instructions/step6.png" width = "340" height="300">
 7. Enlarge image with protection (protect Ash).  
 <img src="results/instructions/step7.png" width = "340" height="300">
-8. Download final result.
-
-- 2 minutes video of these steps:
-
+8. Download final result.  
+See 2 minutes video of these steps. Turn on subtitles to follow instructions:
 [![Pika Pika](results/instructions/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)

@@ -52,17 +52,24 @@ The app supports image compression, enlargement and object removal which is a co
 ## How to use [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) in 2 minutes?
 
 ### Where is Pikachu?
-![](results/ash.gif)
+![](results/instructions/ash.gif)
 
 ### Example of object removal
+
+
 1. Open [image resizer](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) and click Start to load resizing page.
 2. Upload image you want to resize.
-3. Choose Image compression with object removal.
+3. Choose Image compression with object removal.  
+<img src="results/instructions/steps1-3.png" width = "340" height="300">
 4. On the canvas draw around the area you want to remove (Bye Pikachu)
-5. Click resize and wait.
-6. Download image and then upload it again to enlarge back to initial size.
-7. Enlarge image with protection (protect Ash).
-8. Done
+5. Click resize and wait.  
+<img src="results/instructions/steps4-5.png" width = "340" height="300">
+
+6. Download image and then upload it again to enlarge back to initial size.  
+<img src="results/instructions/step6.png" width = "340" height="300">
+7. Enlarge image with protection (protect Ash).  
+<img src="results/instructions/step7.png" width = "340" height="300">
+8. Download final result.
 - Video of these steps:
 
-[![Pika Pika](results/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)
+[![Pika Pika](results/instructions/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)

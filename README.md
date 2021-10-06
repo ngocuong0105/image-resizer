@@ -58,14 +58,18 @@ The app supports image compression, enlargement and object removal which is a co
 2. Upload image you want to resize.
 3. Choose Image compression with object removal.  
 <img src="results/instructions/steps1-3.png" width = "340" height="300">
+
 4. On the canvas draw around the area you want to remove (Bye Pikachu)
+
 5. Click resize and wait.  
 <img src="results/instructions/steps4-5.png" width = "340" height="300">
 
 6. Download image and then upload it again to enlarge back to initial size.  
 <img src="results/instructions/step6.png" width = "340" height="300">
+
 7. Enlarge image with protection (protect Ash).  
 <img src="results/instructions/step7.png" width = "340" height="300">
+
 8. Download final result.  
 
 See 2 minutes video of these steps. Turn on subtitles to follow instructions:

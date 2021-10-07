@@ -1,3 +1,7 @@
+'''
+Some css wrappers for streamlit
+'''
+
 import streamlit as st
 import time
 

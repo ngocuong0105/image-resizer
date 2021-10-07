@@ -37,7 +37,7 @@ class ResizeableImage:
         '''
         Takes a seam (a list of coordinates with exactly one pair of
         coordinates per row). Removes pixel at each of those coordinates,
-         and slides left all the pixels to its right. Shifts pixels under
+        and slides left all the pixels to its right. Shifts pixels under
         protection and removal accordingly. Decreases the width by 1.
         '''
         for i,j in seam:
@@ -209,7 +209,7 @@ class ResizeableImage:
     def sobel_energy_mat(self) -> 'np.array[float]':
         '''
         Sobel energy matrix. Additional energy constants are added in
-         protected, temporary protected, removed and edge cells.
+        protected, temporary protected, removed and edge cells.
         '''
         b, g, r = cv2.split(self.pixels)
         b_energy = (np.square(cv2.Sobel(b, -1, 1, 0)) + np.square(cv2.Sobel(b, -1, 0, 1)))**0.5

@@ -12,6 +12,7 @@ class ResizeableImage:
         """
         ResizeableImage is the core object of this app. 
         It takes an image filename and stores the image pixels, width and height.
+        Computes energy maps of an image and finds best seam to be removed.
         Supports all operations on seams - removal, insertion, coloring.
         """
         self.height, self.width, _= image.shape

@@ -146,9 +146,9 @@ class ResizeableImage:
     #################################
     @lru_cache()
     def energy(self, i:int, j:int) -> float:
-        """
+        '''
         Given coordinates (i,j), returns an energy, or cost associated with removing that pixel.
-        """
+        '''
         # assign high cost for edges and protected cells
         if i==0 or i==self.height-1 or j==0 or j==self.width-1 or (i,j) in self.protected:
             return self.const
@@ -161,9 +161,9 @@ class ResizeableImage:
                    self.distance(self.pixels[i-1][j+1], self.pixels[i+1][j-1])
 
     def distance(self, pixelA:list, pixelB:list) -> float:
-        """
+        '''
         A distance metric between two pixels, based on their colors.
-        """
+        '''
         ans = 0
         for i in range(len(pixelA)):
             valueA = pixelA[i]

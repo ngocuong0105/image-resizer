@@ -135,10 +135,10 @@ class ResizeableImage:
             newcolor = []
             for c in range(3):
                 val = 0
-                for jj in range(1,21):
+                for jj in range(1,11):
                     val+=self.pixels[i][max(0,j-jj)][c]
                     val+=self.pixels[i][min(self.width-1,j+jj)][c]
-                newcolor.append(val/40)
+                newcolor.append(val/20)
             self.pixels[i][j] = newcolor
 
     #################################

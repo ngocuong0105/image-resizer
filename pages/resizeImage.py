@@ -154,9 +154,9 @@ def compress_image(resImage:resizeableImage, new_width:int, remove:bool = False)
             vertical_seam = resImage.best_seam()
             resImage.color_seam(vertical_seam) 
             img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
-            # if prev==n:
-            #     import time
-            #     time.sleep(15)
+            if prev==n:
+                import time
+                time.sleep(5)
             resImage.remove_seam(vertical_seam)
             curr = len(resImage.removed)
             if prev==curr:

@@ -1,5 +1,6 @@
 # Image resizer using seam carving
-                                                                                                     2 min read
+<sup><sub>2 min read</sub></sup> 
+
 - Have you ever been frustated when your favorite family picture or another wallpaper does not fit on your screen?
 - Have you tried to resize your image but it just scales up/down everything making the objects in the picture look peculiar?
 - Have you ever wanted to remove an unwanted item from an image and make it disappear as if it was never there?

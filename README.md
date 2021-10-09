@@ -1,5 +1,6 @@
  <up><sub>2 min read</sub></sup> 
-# Image resizer using seam carving <sup><sup><sup> <sup><sup><sup>2 min read</sup></sup></sup></sup></sup></sup>
+# Image resizer using seam carving
+ <sup>2 min read</sup>
 
 - Have you ever been frustated when your favorite family picture or another wallpaper does not fit on your screen?
 - Have you tried to resize your image but it just scales up/down everything making the objects in the picture look peculiar?

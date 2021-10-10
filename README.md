@@ -23,8 +23,7 @@ The app supports image compression, enlargement and object removal which is a co
 **Protect Charmander!**  
 ![](results/image_enlargement/charmander.gif)
 
-**Original image**  
-<!-- ![](results/image_enlargement/charmander_Original.png) -->
+**Original image** 
 <img src="results/image_enlargement/charmander_Original.png" width = "600" height="380">
 
 **Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)**  
@@ -75,3 +74,7 @@ The app supports image compression, enlargement and object removal which is a co
 See 2 minutes video of these steps. Turn on subtitles to follow instructions:
 
 [![Pika Pika](results/instructions/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)
+
+**Final example: [ImageReziser](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) helps you to ged rid of your ex in the most optimal way!**  
+![](results/object_removal/couple.gif)
+<img src="results/object_removal/couple.gif" width = "500" height="300">

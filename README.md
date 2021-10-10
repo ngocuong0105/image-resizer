@@ -25,7 +25,7 @@ The app supports image compression, enlargement and object removal which is a co
 ![](results/image_enlargement/charmander.gif)
 
 **Original image**   
-<img src="results/image_enlargement/charmander_Original.png">
+<img src="results/image_enlargement/charmander_Original.png"  width = "600" height="402">
 
 **Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)**  
 ![](results/image_enlargement/charmander_Scale.png)

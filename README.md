@@ -76,6 +76,5 @@ See 2 minutes video of these steps. Turn on subtitles to follow instructions:
 
 [![Pika Pika](results/instructions/thumbnail.png)](https://www.youtube.com/watch?v=O7b6AzBf0EA&feature=youtu.be)
 
-**Final example: [ImageReziser](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) helps you to ged rid of your ex in the most optimal way!**  
-![](results/object_removal/couple.gif)
+**Final example: [ImageReziser](https://share.streamlit.io/ngocuong0105/imageresizer/app.py) helps you to ged rid of your ex in the most optimal way!** 
 <img src="results/object_removal/couple.gif" width = "500" height="300">

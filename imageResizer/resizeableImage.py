@@ -1,3 +1,7 @@
+'''
+ResizeblaImage wrapper for images represented with np.array pixels.
+'''
+
 import numpy as np
 from PIL import Image
 from methodtools import lru_cache

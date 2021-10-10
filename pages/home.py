@@ -1,3 +1,6 @@
+'''
+Streamlit home page
+'''
 import streamlit as st
 
 def show_title(title:str):

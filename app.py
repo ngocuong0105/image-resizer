@@ -1,7 +1,9 @@
 '''
-Driver script of the application.
+Driver code of the app.
+To run it you neet to install streamlit v.1.0 and run in the terminal
+streamlit run app.py
+Do not forget to set the current working directory where app.py is!
 '''
-
 import streamlit as st
 from PIL import Image
 from pages import home, resizeImage

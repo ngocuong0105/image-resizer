@@ -30,7 +30,7 @@ The app supports image compression, enlargement and object removal which is a co
 **Generic image enalrgement with scaling using first [google result](https://resizeimage.net/)**  
 ![](results/image_enlargement/charmander_Scale.png)
 
-**Image enlargement with content awareness with [SIR](https://share.streamlit.io/ngocuong0105/imageresizer/app.py)**  
+**Image enlargement with content awareness by [SIR](https://share.streamlit.io/ngocuong0105/imageresizer/app.py)**  
 ![](results/image_enlargement/charmander_ImageResizer.png)
 
 ------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ The app supports image compression, enlargement and object removal which is a co
 **Generic compression with scaling using first [google result](https://resizeimage.net/)**  
 ![](results/image_compression/ship_Scale.jpg)
 
-**Image compression with content protection with [SIR](https://share.streamlit.io/ngocuong0105/imageresizer/app.py)**  
+**Image compression with content protection byIf you answer yes to any of the questions above, you are on the right place. This project provides a web application called SIR for image  [SIR](https://share.streamlit.io/ngocuong0105/imageresizer/app.py)**  
 ![](results/image_compression/ship_ImageResizer.jpg)
 
 ------------------------------------------------------------------------------------

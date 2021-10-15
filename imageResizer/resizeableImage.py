@@ -1,5 +1,5 @@
 '''
-ResizeblaImage wrapper for images represented with np.array pixels.
+Resizeable Image wrapper for images represented by np.array pixels.
 '''
 
 import numpy as np

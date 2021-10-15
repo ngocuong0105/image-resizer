@@ -19,7 +19,7 @@ st.set_page_config(page_title='SIR',\
 
 if 'home' not in st.session_state:
     home.show_title('SMART IMAGE RESIZER')
-    if click_button('Start',position=65):
+    if click_button('Start',size=18,position=65):
         st.write('In home')
         st.session_state['home'] = None
         st.experimental_rerun()

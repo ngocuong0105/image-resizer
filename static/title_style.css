@@ -1,11 +1,11 @@
 h1{
     line-height: 500px;
     text-align: center;
-    font-size: 70px;
+    font-size: 45px;
     font-family: Hack, sans-serif;
     text-transform: uppercase;
     background: linear-gradient(90deg, #000, #ffcc2a, #000);
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

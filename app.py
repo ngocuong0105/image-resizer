@@ -12,13 +12,13 @@ about_info = 'Simple image coompressor.'
 menu_items = {'About': about_info}
 
 
-st.set_page_config(page_title='Image resizer',\
+st.set_page_config(page_title='SIR',\
                 page_icon=Image.open('static/webIcon.png'),\
                 initial_sidebar_state='collapsed',\
                 menu_items=menu_items)
 
 if 'home' not in st.session_state:
-    home.show_title('IMAGE RESIZER')
+    home.show_title('SMART IMAGE RESIZER')
     if click_button('Start',position=65):
         st.write('In home')
         st.session_state['home'] = None

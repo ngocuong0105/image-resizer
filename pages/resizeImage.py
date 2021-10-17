@@ -47,7 +47,11 @@ def run() -> None:
         d = dict(zip(['simple','protect','removal'],options))
         compress_mode = st.selectbox(txt,options)
 
-        if compress_mode==d['protect']:
+        if compress_mode==d['simple']:
+            # select new height and width
+            new_height,new_width = new_width_height(resImage)
+            
+        elif compress_mode==d['protect']:
             # select new height and width
             new_height,new_width = new_width_height(resImage)
             tool_txt = 'Select drawing tool:'

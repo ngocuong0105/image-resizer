@@ -1,5 +1,5 @@
 '''
-Some css wrappers for streamlit
+Some css wrappers for streamlit texts, buttons, progress bars.
 '''
 
 import streamlit as st

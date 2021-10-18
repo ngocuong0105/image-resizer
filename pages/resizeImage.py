@@ -227,8 +227,8 @@ def new_width_height(resImage:ResizeableImage) -> tuple:
     # txt_height = f'Select desired height\
     #         (should be smaller than the current height of {resImage.height}px):'
     # new_height = st.number_input(txt_height, value = int(resImage.height*0.8), step=1)
-    txt_width = f'Select desired width\
-            (should be smaller than the current height of {resImage.width}px):'
+    txt_width = f'Select target width\
+            (should be smaller than the current width of {resImage.width}px):'
     new_width = st.number_input(txt_width, value =  int(resImage.width*0.8), step=1)
     width_removed = resImage.width-new_width
     new_height = 0 # remove if vertical seam removal is supported
@@ -246,8 +246,8 @@ def new_width_height_enlarge(resImage:ResizeableImage) -> tuple:
     # txt_height = f'Select desired height\
     #         (should be larger than the current height of {resImage.height}px):'
     # new_height = st.number_input(txt_height, value = int(resImage.height*1.5), step=1)
-    txt_width = f'Select desired width\
-            (should be larger than the current height of {resImage.width}px):'
+    txt_width = f'Select target width\
+            (should be larger than the current width of {resImage.width}px):'
     new_width = st.number_input(txt_width, value =  int(resImage.width*1.5), step=1)
     width_removed = resImage.width-new_width
     new_height = 2**31

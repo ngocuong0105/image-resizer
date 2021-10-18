@@ -15,7 +15,8 @@ class ResizeableImage:
     def __init__(self, image: np.array, format_type:str = '.png') -> None:
         """
         ResizeableImage is the core object of this app. 
-        It takes an image filename and stores the image pixels, width and height.
+        It takes image pixels in the form of np.array and stores them.
+        Also stores image width, height and format type of the file.
         Computes energy maps of an image and finds best seam to be removed.
         Supports all operations on seams - removal, insertion, coloring.
         """

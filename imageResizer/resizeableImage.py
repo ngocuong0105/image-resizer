@@ -36,10 +36,6 @@ class ResizeableImage:
         '''
         Takes a seam (a list of coordinates) and colors it all one color.
         '''
-        import streamlit as st
-        st.write(self.pixels)
-        # st.write(seam)
-        st.write(self.pixels[0][0])
         for i,j in seam:
             self.pixels[i][j] = color
 

@@ -21,7 +21,7 @@ def open_file() -> 'tuple[ResizeableImage,str]':
     '''
     txt = 'If this is your first time here please do check out sample results in my [GitHub](https://github.com/ngocuong0105/imageResizer).'
     st.write(txt)
-    uploaded_file = st.file_uploader("Upload image file", type=['png', 'jpg', 'jpeg'])
+    uploaded_file = st.file_uploader("Upload your own image file", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
         st.write('File is loaded.')
         file_bytes = np.asarray(bytearray(uploaded_file.getbuffer()))
@@ -29,10 +29,19 @@ def open_file() -> 'tuple[ResizeableImage,str]':
         format_type = uploaded_file.type.split('/')[-1]
         resImage = ResizeableImage(np_img,format_type)
         return resImage
+    else:
+        from PIL import Image
+        image = Image.open('static/sofa.jpg')
+        st.write('Default upload:')
+        st.image(image)
+        np_img = cv2.imread('static/sofa.jpg', cv2.IMREAD_COLOR)
+        resImage = ResizeableImage(np_img,'.jpg')
+        return resImage
 
 def run() -> None:
     '''
     Driver function for running the whole page.
+    Controls user flow on streamlit UI.
     '''
     resImage = open_file()
     if resImage==None:

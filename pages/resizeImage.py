@@ -47,7 +47,7 @@ def run() -> None:
     if resImage==None:
         st.stop()
     options = ['🗜️ Image compression',' 🖼️ Image enlargement','🪞 Soften Image','']
-    mode = st.selectbox('Select action',options, index = 3)
+    mode = st.selectbox('Select action',options, index = 0)
     # image compression
     if mode==options[0]:
         # select compression mode
@@ -229,7 +229,7 @@ def new_width_height(resImage:ResizeableImage) -> tuple:
     # new_height = st.number_input(txt_height, value = int(resImage.height*0.8), step=1)
     txt_width = f'Select target width\
             (should be smaller than the current width of {resImage.width}px):'
-    new_width = st.number_input(txt_width, value =  int(resImage.width*0.8), step=1)
+    new_width = st.number_input(txt_width, value =  int(resImage.width*0.9), step=1)
     width_removed = resImage.width-new_width
     new_height = 0 # remove if vertical seam removal is supported
     height_removed = resImage.height-new_height

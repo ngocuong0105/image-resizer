@@ -192,9 +192,9 @@ class ResizeableImage:
         protected, temporary protected, removed and edge cells.
         '''
         b, g, r = cv2.split(self.pixels)
-        b_energy = (np.square(cv2.Scharr(b, -1, 1, 0)) + np.square(cv2.Scharr(b, -1, 0, 1)))**0.5
-        g_energy = (np.square(cv2.Scharr(g, -1, 1, 0)) + np.square(cv2.Scharr(g, -1, 0, 1)))**0.5
-        r_energy = (np.square(cv2.Scharr(r, -1, 1, 0)) + np.square(cv2.Scharr(r, -1, 0, 1)))**0.5
+        b_energy = (np.square(cv2.Scharr(b, -1, 1, 0)) + np.square(cv2.Scharr(b, -1, 0, 1)))
+        g_energy = (np.square(cv2.Scharr(g, -1, 1, 0)) + np.square(cv2.Scharr(g, -1, 0, 1)))
+        r_energy = (np.square(cv2.Scharr(r, -1, 1, 0)) + np.square(cv2.Scharr(r, -1, 0, 1)))
         mat = b_energy+g_energy+r_energy
 
         for i,j in self.temp_protected:
@@ -218,9 +218,9 @@ class ResizeableImage:
         protected, temporary protected, removed and edge cells.
         '''
         b, g, r = cv2.split(self.pixels)
-        b_energy = (np.square(cv2.Sobel(b, -1, 1, 0)) + np.square(cv2.Sobel(b, -1, 0, 1)))**0.5
-        g_energy = (np.square(cv2.Sobel(g, -1, 1, 0)) + np.square(cv2.Sobel(g, -1, 0, 1)))**0.5
-        r_energy = (np.square(cv2.Sobel(r, -1, 1, 0)) + np.square(cv2.Sobel(r, -1, 0, 1)))**0.5
+        b_energy = (np.square(cv2.Sobel(b, -1, 1, 0)) + np.square(cv2.Sobel(b, -1, 0, 1)))
+        g_energy = (np.square(cv2.Sobel(g, -1, 1, 0)) + np.square(cv2.Sobel(g, -1, 0, 1)))
+        r_energy = (np.square(cv2.Sobel(r, -1, 1, 0)) + np.square(cv2.Sobel(r, -1, 0, 1)))
         mat = b_energy+g_energy+r_energy
 
         for i,j in self.temp_protected:

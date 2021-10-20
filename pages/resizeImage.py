@@ -31,10 +31,11 @@ def open_file() -> 'tuple[ResizeableImage,str]':
         return resImage
     else:
         from PIL import Image
-        image = Image.open('static/sofa.jpg')
+        image = Image.open('static/ballons.jpg')
+        st.session_state['default_seam'] = [255,255,255]
         st.write('Default upload:')
         st.image(image)
-        np_img = cv2.imread('static/sofa.jpg', cv2.IMREAD_COLOR)
+        np_img = cv2.imread('static/ballons.jpg', cv2.IMREAD_COLOR)
         resImage = ResizeableImage(np_img,'.jpg')
         return resImage
 
@@ -154,9 +155,10 @@ def compress_image(resImage:resizeableImage, new_width:int, remove:bool = False)
             bar.progress((i+1)/(w-new_width+1))
             # seam computation
             vertical_seam = resImage.best_seam()
-            resImage.color_seam(vertical_seam) 
+            resImage.color_seam(vertical_seam, st.session_state.get('default_seam',[0,0,255]))
             img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
             resImage.remove_seam(vertical_seam)
+
     else:
         n = len(resImage.removed)
         prev,curr=n,n
@@ -171,9 +173,6 @@ def compress_image(resImage:resizeableImage, new_width:int, remove:bool = False)
             vertical_seam = resImage.best_seam()
             resImage.color_seam(vertical_seam) 
             img_place.image(resImage.encodeBytes(resImage.format_type),width=resImage.width)
-            if prev==n:
-                import time
-                time.sleep(5)
             resImage.remove_seam(vertical_seam)
             curr = len(resImage.removed)
             if prev==curr:
@@ -229,7 +228,7 @@ def new_width_height(resImage:ResizeableImage) -> tuple:
     # new_height = st.number_input(txt_height, value = int(resImage.height*0.8), step=1)
     txt_width = f'Select target width\
             (should be smaller than the current width of {resImage.width}px):'
-    new_width = st.number_input(txt_width, value =  int(resImage.width*0.9), step=1)
+    new_width = st.number_input(txt_width, value =  int(resImage.width*0.8), step=1)
     width_removed = resImage.width-new_width
     new_height = 0 # remove if vertical seam removal is supported
     height_removed = resImage.height-new_height
@@ -332,10 +331,11 @@ def _display_energy(resImage: ResizeableImage):
     Helper function when debugging. Displays energy map of the image.
     Useful to put in loops while computing seams and image is compressed or enlarged.
     '''
-    mat = resImage.sobel_energy_mat()
+    mat = resImage.scharr_energy_mat()
     fig, ax = plt.subplots()
     sns.heatmap(mat, ax=ax, cmap='Spectral')
     # put this code below wherever you want to display the energy map
     # energy_place = st.empty()
     # energy_place.write(_display_energy(resImage))
     return fig
+

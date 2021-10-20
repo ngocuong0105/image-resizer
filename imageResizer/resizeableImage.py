@@ -27,7 +27,7 @@ class ResizeableImage:
         self.protected = set()
         self.removed = set()
         self.temp_protected = set()
-        self.const = 30000 # energy constant
+        self.const = 300000 # energy constant
 
     #################################
     # Image operations with seam

@@ -10,7 +10,7 @@ from pages import home, resizeImage
 from utils import click_button 
 
 # App layout settings
-about_info = 'Simple image coompressor.'
+about_info = 'Smart image resizer.'
 menu_items = {'About': about_info}
 
 

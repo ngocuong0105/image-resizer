@@ -1,15 +1,16 @@
 '''
 Resizeable Image wrapper for images represented by np.array pixels.
 '''
+
+import io
+import copy
+from typing import List, Set
 import numpy as np
 from PIL import Image
 from methodtools import lru_cache
 import cv2
 from numpy.lib.function_base import iterable
 import random
-import io
-import copy
-from typing import List, Set
 class ResizeableImage:
     """
     ResizeableImage is the core object of this app.

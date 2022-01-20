@@ -9,7 +9,7 @@ from numpy.lib.function_base import iterable
 import random
 import io
 import copy
-
+from typing import List
 class ResizeableImage:
     """
     ResizeableImage is the core object of this app.
@@ -176,7 +176,7 @@ class ResizeableImage:
             ans += abs(valueA-valueB)
         return ans
 
-    def basic_energy_mat(self) -> 'list[list]':
+    def basic_energy_mat(self) -> List[list]:
         '''
         Simple energy function taking distance difference of neighbour cells.
         '''
@@ -266,7 +266,7 @@ class ResizeableImage:
     # Optimal seam computation using DP
     ###################################
 
-    def best_seam(self) -> 'list[tuple]':
+    def best_seam(self) -> List[tuple]:
         '''
         Computes vertical seam with lowest energy using dynamic programming.
         '''

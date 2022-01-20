@@ -9,7 +9,7 @@ from numpy.lib.function_base import iterable
 import random
 import io
 import copy
-from typing import List
+from typing import List, Set
 class ResizeableImage:
     """
     ResizeableImage is the core object of this app.
@@ -24,10 +24,10 @@ class ResizeableImage:
         self.pixels = image
         self.format_type = format_type
 
-        self.protected = set()
-        self.removed = set()
-        self.temp_protected = set()
-        self.const = 300000 # energy constant
+        self.protected: Set[tuple] = set()
+        self.removed: Set[tuple] = set()
+        self.temp_protected: Set[tuple] = set()
+        self.const: float = 300000 # energy constant
 
     #################################
     # Image operations with seam
@@ -266,15 +266,15 @@ class ResizeableImage:
     # Optimal seam computation using DP
     ###################################
 
-    def best_seam(self) -> List[tuple]:
+    def best_seam(self) -> List[List]:
         '''
         Computes vertical seam with lowest energy using dynamic programming.
         '''
         n,m = self.width,self.height
 
         # initializing dp
-        dp = [[None]*(n) for _ in range(m)]
-        record = [[None]*(n) for _ in range(m)]
+        dp:List[List] = [[None]*(n) for _ in range(m)]
+        record:List[List] = [[None]*(n) for _ in range(m)]
         energy_mat = self.scharr_energy_mat()
         for j in range(n):
             dp[0][j]=energy_mat[0][j]
@@ -309,8 +309,8 @@ class ResizeableImage:
             if dp[m-1][j]<opt_value:
                 opt_coordinate=[m-1,j]
                 opt_value=dp[m-1][j]
-        res=[]
-        row=m
+        res = []
+        row = m
         while row>0:
             res.append(opt_coordinate)
             opt_coordinate=record[opt_coordinate[0]][opt_coordinate[1]]

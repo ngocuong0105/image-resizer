@@ -1,7 +1,6 @@
 '''
 Resizeable Image wrapper for images represented by np.array pixels.
 '''
-
 import numpy as np
 from PIL import Image
 from methodtools import lru_cache
@@ -246,7 +245,7 @@ class ResizeableImage:
         return encoded_image.tobytes()
 
     def openPilImage(self):
-        np_img= cv2.cvtColor(self.pixels,cv2.COLOR_BGR2RGB)
+        np_img= cv2.cvtColor(self.pixels, cv2.COLOR_BGR2RGB)
         np_img = np_img.astype(np.uint8)
         return Image.fromarray(np_img)
 

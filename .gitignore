@@ -1,0 +1,6 @@
+desktopp
+ignore
+playground.py
+imageResizer/test_resizeable_image.py
+__pycache__
+images

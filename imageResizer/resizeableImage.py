@@ -12,14 +12,15 @@ import io
 import copy
 
 class ResizeableImage:
+    """
+    ResizeableImage is the core object of this app.
+    It takes image pixels in the form of np.array and stores them.
+    Also stores image width, height and format type of the file.
+    Computes energy maps of an image and finds best seam to be removed.
+    Supports all operations on seams - removal, insertion, coloring.
+    """
+
     def __init__(self, image: np.array, format_type:str = '.png') -> None:
-        """
-        ResizeableImage is the core object of this app. 
-        It takes image pixels in the form of np.array and stores them.
-        Also stores image width, height and format type of the file.
-        Computes energy maps of an image and finds best seam to be removed.
-        Supports all operations on seams - removal, insertion, coloring.
-        """
         self.height, self.width, _ = image.shape
         self.pixels = image
         self.format_type = format_type
@@ -77,11 +78,11 @@ class ResizeableImage:
                     self.temp_protected.add((i,jj))
                 if (i,jj-1) in self.removed:
                     self.removed.add((i,jj))
-                    
+
             self.pixels[i][j] = self._average(i,j)
 
         self.width += 1
-    
+
     def _average(self,i:int , j:int) -> list:
         '''
         Average pixels color of neihbours of pixel (i,j).
@@ -96,7 +97,7 @@ class ResizeableImage:
                     count += 1
             res.append(curr/count)
         return res
-    
+
     def protect_area(self, area: iterable, protection_range:int = 0) -> None:
         '''
         In-place protects cells in specified area.
@@ -159,7 +160,7 @@ class ResizeableImage:
             return self.const
         elif (i,j) in self.removed:
             return -self.const
-        else: 
+        else:
             return self.distance(self.pixels[i][j-1], self.pixels[i][j+1]) +\
                    self.distance(self.pixels[i-1][j], self.pixels[i+1][j]) +\
                    self.distance(self.pixels[i-1][j-1], self.pixels[i+1][j+1]) +\
@@ -180,7 +181,7 @@ class ResizeableImage:
         '''
         Simple energy function taking distance difference of neighbour cells.
         '''
-        mat = [[0]*self.width for _ in range(self.height)] 
+        mat = [[0]*self.width for _ in range(self.height)]
         for i in range(self.height):
             for j in range(self.width):
                 mat[i][j]=self.energy(i,j)
@@ -252,7 +253,8 @@ class ResizeableImage:
     def byteImage(self):
         """Returns a PIL Image that is represented by self."""
         image = Image.new('RGB', (self.width, self.height))
-        image.putdata([tuple(self.pixels[i][j]) for i in range(self.height) for j in range(self.width)])
+        image.putdata([tuple(self.pixels[i][j]) \
+                    for i in range(self.height) for j in range(self.width)])
         return self._pilImage_to_bytes(image)
 
     def _pilImage_to_bytes(self, img:Image):
@@ -278,10 +280,10 @@ class ResizeableImage:
         for j in range(n):
             dp[0][j]=energy_mat[0][j]
             record[0][j]=[0,j]
-            
+
         for i in range(1,m):
             for j in range(n):
-                if j>0 and j<n-1:
+                if 0 < j < n-1:
                     val = min(dp[i-1][j-1],dp[i-1][j],dp[i-1][j+1])
                     if val==dp[i-1][j-1]:
                         record[i][j]=[i-1,j-1]
@@ -302,7 +304,7 @@ class ResizeableImage:
                     if val==dp[i-1][j]:
                         record[i][j]=[i-1,j]
                 dp[i][j] = val+energy_mat[i][j]
-                
+
         opt_value = float('inf')
         for j in range(n):
             if dp[m-1][j]<opt_value:
